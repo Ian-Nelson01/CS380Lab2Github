@@ -80,6 +80,15 @@ class BinarySearchTree{
    */
    public void postOrderTraversal(Node root){
       //implement me
+      	   if (root != null) {
+                   
+         // movement
+		   postOrderTraversal(root.left);
+	      postOrderTraversal(root.right);
+         
+         // some sort of visitation
+         System.out.println("Value is " + root.value);
+	   }
    }
    
    
