@@ -140,7 +140,10 @@ class BinarySearchTree{
    */
    public int getMax(Node root){
 	  //implement me
-     return 0;
+      if (root.right != null){
+         return getMax(root.right);
+      } 
+      return root.value;
    }
    
    
@@ -212,6 +215,7 @@ public class TreeDemo{
       System.out.println("[Find " + myKey + ":   " + t1.find(t1.root, myKey));          
 
       System.out.println("[getMin :   " + t1.getMin(t1.root));          
+      System.out.println("[getMax :   " + t1.getMax(t1.root));          
 
     
    }  
