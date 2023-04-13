@@ -43,7 +43,14 @@ class BinarySearchTree{
    */
    public void preOrderTraversal(Node root){
       //implement me
-
+	   if (root != null) {
+         // some sort of visitation
+         System.out.println("Value is " + root.value);
+         
+         // movement
+		   preOrderTraversal(root.left);
+	      preOrderTraversal(root.right);
+	   }
    }
 
    
@@ -162,3 +169,5 @@ public class TreeDemo{
       
    }  
 }
+
+// small change to test github
