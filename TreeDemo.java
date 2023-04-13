@@ -1,7 +1,27 @@
+// Ian Nelson
+// 4/12/2023
+// CS 380
+// Lab 2
+
+/**
+* This is a class that creates a node object.
+*@Author Prof. Dovhalets
+*/
+
 class Node{
+	/**
+	 * An integer field holding the nodes value
+	 */
    int value;
+   /**
+    * two node fields for the left and right linked node.
+    */
    Node left, right;
    
+   /**
+   * Node constructor
+   * @param value | value of node
+   */
    public Node(int value){
       this.value = value;
       left = null;
@@ -10,13 +30,21 @@ class Node{
 
 }
 
+/**
+* This is a class that creates a tree object.
+*@Author Prof. Dovhalets
+*/
 class BinarySearchTree{
-
+	/**
+	 * A node object to serve as the root of the tree
+	 */
    Node root;
    
-   
-   /*
-   recursive insert method
+   /**
+   * Inserts a node into the tree
+   * @param root | current root node
+   * @param value | int value of node
+   * @return root | root node
    */
    public Node insert(Node root, int value){
       //base case
@@ -38,119 +66,134 @@ class BinarySearchTree{
    
    
    
-   /*
-   pre-order traversal
+   /**
+   * Prints values of nodes in pre order
+   * @param root | current root node
    */
    public void preOrderTraversal(Node root){
       //implement me
-	   if (root != null) {
+      if (root != null) {
          // some sort of visitation
          System.out.println("Value is " + root.value);
          
          // movement
-		   preOrderTraversal(root.left);
-	      preOrderTraversal(root.right);
-	   }
+         preOrderTraversal(root.left);
+         preOrderTraversal(root.right);
+      }
    }
 
    
    
-   /*
-   in-order traversal
+   /**
+   * Prints values of nodes in  order
+   * @param root | current root node
    */
    public void inOrderTraversal(Node root){
       //implement me
       if (root != null) {
          
          // movement
-		   inOrderTraversal(root.left);
+         inOrderTraversal(root.left);
          
          // some sort of visitation
          System.out.println("Value is " + root.value);
          
          // movement
-	      inOrderTraversal(root.right);
-	   }
+         inOrderTraversal(root.right);
+      }
    }
    
    
    
-   /*
-   post-order traversal
+   /**
+   * Prints values of nodes in post order
+   * @param root | current root node
    */
    public void postOrderTraversal(Node root){
       //implement me
-      	   if (root != null) {
+      if (root != null) {
                    
          // movement
-		   postOrderTraversal(root.left);
-	      postOrderTraversal(root.right);
+         postOrderTraversal(root.left);
+         postOrderTraversal(root.right);
          
          // some sort of visitation
          System.out.println("Value is " + root.value);
-	   }
+      }
    }
    
    
    
-   /*
-   a method to find the node in the tree
-   with a specific value
+   /**
+   * finds a key value from nodes in the tree
+   * @param root | current root node
+   * @param key | value being searched for
+   * @return boolean | true or false depending on if the key is found
    */
    public boolean find(Node root, int key){
-	  //implement me
-     boolean returnBool = true;
-
-     if (root == null){
-      return false;
-     }
+     //implement me
+      boolean returnBool = true;
      
-     if (root.value == key){
-      return true;  
-     }
-     else if (root.value > key){
-      returnBool = find(root.left, key);
-     }
-     else if (root.value < key){
-      returnBool = find(root.right, key);
-     }
-
-     return returnBool;
+     // base case for no key
+      if (root == null){
+         return false;
+      }
+     
+     // if found
+      if (root.value == key){
+         return true;  
+      }
+      // recursive statement
+      else if (root.value > key){
+         returnBool = find(root.left, key);
+      }
+      //recursive statement
+      else if (root.value < key){
+         returnBool = find(root.right, key);
+      }
+   
+      return returnBool;
    }
    
    
    
-   /*
-   a method to find the node in the tree
-   with a smallest key
+   /**
+   * Prints values of smallest valued node
+   * @param root | current root node
+   * @return int | value of the min node
    */
    public int getMin(Node root){
-	  //implement me
+     //implement me
       if (root.left != null){
-         return getMin(root.left);
+         return getMin(root.left); // recursive statement
       } 
+      // base case
       return root.value;
    }
   
   
   
-   /*
-   a method to find the node in the tree
-   with a largest key
+   /**
+   * Prints values of largest valued node
+   * @param root | current root node
+   * @return int | value of the max node
    */
    public int getMax(Node root){
-	  //implement me
+     //implement me
       if (root.right != null){
-         return getMax(root.right);
+         return getMax(root.right); // recursive statement
       } 
+      // base case
       return root.value;
    }
    
    
    
-   /*
-   this method will not compile until getMax
-   is implemented
+   /**
+   * deletes a key value from nodes in the tree
+   * @param root | current root node
+   * @param key | value being searched for
+   * @return Node | delete node
    */
    public Node delete(Node root, int key){
       
@@ -185,8 +228,15 @@ class BinarySearchTree{
 }
 
 
-
+/**
+* This is a class that contains the main method
+*@Author Prof. Dovhalets
+*/
 public class TreeDemo{
+	   /**
+	   * main method
+	   * @param args | string array of arguments
+	   */
    public static void main(String[] args){
       BinarySearchTree t1  = new BinarySearchTree();
       t1.root = new Node(24);
@@ -213,10 +263,10 @@ public class TreeDemo{
       
       myKey = 17;
       System.out.println("[Find " + myKey + ":   " + t1.find(t1.root, myKey));          
-
+   
       System.out.println("[getMin :   " + t1.getMin(t1.root));          
       System.out.println("[getMax :   " + t1.getMax(t1.root));          
-
+   
     
    }  
 }
