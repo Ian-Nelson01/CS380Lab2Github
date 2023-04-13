@@ -60,6 +60,17 @@ class BinarySearchTree{
    */
    public void inOrderTraversal(Node root){
       //implement me
+      if (root != null) {
+         
+         // movement
+		   inOrderTraversal(root.left);
+         
+         // some sort of visitation
+         System.out.println("Value is " + root.value);
+         
+         // movement
+	      inOrderTraversal(root.right);
+	   }
    }
    
    
