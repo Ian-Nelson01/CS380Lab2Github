@@ -125,8 +125,11 @@ class BinarySearchTree{
    with a smallest key
    */
    public int getMin(Node root){
-      //implement me
-      return 0;
+	  //implement me
+      if (root.left != null){
+         return getMin(root.left);
+      } 
+      return root.value;
    }
   
   
@@ -207,6 +210,8 @@ public class TreeDemo{
       
       myKey = 17;
       System.out.println("[Find " + myKey + ":   " + t1.find(t1.root, myKey));          
+
+      System.out.println("[getMin :   " + t1.getMin(t1.root));          
 
     
    }  
