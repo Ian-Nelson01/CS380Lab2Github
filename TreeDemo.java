@@ -99,7 +99,23 @@ class BinarySearchTree{
    */
    public boolean find(Node root, int key){
 	  //implement me
-      return false;           
+     boolean returnBool = true;
+
+     if (root == null){
+      return false;
+     }
+     
+     if (root.value == key){
+      return true;  
+     }
+     else if (root.value > key){
+      returnBool = find(root.left, key);
+     }
+     else if (root.value < key){
+      returnBool = find(root.right, key);
+     }
+
+     return returnBool;
    }
    
    
@@ -182,11 +198,17 @@ public class TreeDemo{
       t1.inOrderTraversal(t1.root);
       System.out.println();
       
-          System.out.print("[post-order :   ");
+      System.out.print("[post-order :   ");
       t1.postOrderTraversal(t1.root);
       System.out.println();
-           
+       
+      int myKey = 22;
+      System.out.println("[Find " + myKey + ":   " + t1.find(t1.root, myKey));          
       
+      myKey = 17;
+      System.out.println("[Find " + myKey + ":   " + t1.find(t1.root, myKey));          
+
+    
    }  
 }
 
